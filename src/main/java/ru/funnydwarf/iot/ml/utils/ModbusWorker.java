@@ -44,21 +44,17 @@ public class ModbusWorker {
         }
     }
 
-    private static int crcModbus(byte[] bytes) {
+    public static int crcModbus(byte[] bytes) {
         int errorWord = 0xFFFF;
         int dataByteCount = bytes.length - 2;
 
         for (int i = 0; i < dataByteCount; i++) {
-            errorWord ^= bytes[i];
-            int lsb = 0;
+            errorWord ^= ((int) bytes[i] & 0xFF);
             for (int j = 0; j < 8; j++) {
-                lsb = errorWord & 0x0001;
-                if (lsb == 1) {
-                    errorWord--;
-                }
-                errorWord >>= 1;
-                if (lsb == 1) {
-                    errorWord ^= 0xA001;
+                if ((errorWord & 1) == 1) {
+                    errorWord = (errorWord >> 1) ^ 0xA001;
+                } else {
+                    errorWord >>= 1;
                 }
             }
         }

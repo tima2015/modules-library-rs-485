@@ -1,0 +1,38 @@
+plugins {
+	id 'java'
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+group = 'ru.funnydwarf.iot.ml'
+version = '0.2.0-SNAPSHOT'
+
+repositories {
+	mavenCentral()
+	maven { url "https://jitpack.io" }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot:3.0.2'
+	implementation 'org.springframework.boot:spring-boot-data-jpa:3.0.2'
+	implementation 'org.slf4j:slf4j-api:2.0.3'
+
+	implementation 'com.github.tima2015:modules-library:f599c529ee'
+	implementation 'org.rxtx:rxtx:2.1.7'
+
+	compileOnly 'org.projectlombok:lombok:1.18.24'
+	annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.2'
+
+}
+
+test {
+	useJUnitPlatform()
+}

@@ -99,7 +99,7 @@ public class ModbusWorker {
         int valueStartIndex = 3;
         for (int i = 0; i < values.length; i++) {
             values[i] = (short) (responseByteArray[valueStartIndex + i*2] << 8);
-            values[i] |= responseByteArray[valueStartIndex + i*2 + 1];
+            values[i] |= ((short)responseByteArray[valueStartIndex + i*2 + 1] & 0xFF);
         }
         byte[] bytes = splitCRCModbusBytes(crcModbus(responseByteArray));
         boolean dataValid = bytes[0] == responseByteArray[responseByteArray.length - 2] &&

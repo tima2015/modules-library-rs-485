@@ -21,7 +21,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.0.2'
 	implementation 'org.slf4j:slf4j-api:2.0.3'
 
-	implementation 'com.github.tima2015:modules-library:b36aa691d6'
+	implementation 'com.github.tima2015:modules-library:3708ba5ab8'
 	implementation 'org.rxtx:rxtx:2.1.7'
 
 	compileOnly 'org.projectlombok:lombok:1.18.24'
